@@ -14,6 +14,8 @@ const r = 0.618
 let xu = 0; 
 let xl = 0; 
 let i = 1;
+let x1 = 0
+let x2 = 0
 
 function test(x) {
     let expression = fun.value.trim();
@@ -23,12 +25,12 @@ function test(x) {
 
 function golden(){
     if (i == 1){
-        xu = xuInput.value;
-        xl = xlInput.value;
+        xu = Number(xuInput.value);
+        xl = Number(xlInput.value);
     }
-    let d = r*(xu - xl)
-    let x1 = xl + d;
-    let x2 = xu - d
+    let d = Number(r*(xu - xl))
+    x1 = Number(xl + d);
+    x2 = Number(xu - d);
 
     console.log("Xl = "+xl)
     console.log("F(Xl) = "+test(xl))
