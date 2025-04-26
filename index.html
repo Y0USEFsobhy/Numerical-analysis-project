@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Numerical analysis</title>
+    <link rel="stylesheet" href="src/output.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <style>
+      @keyframes background {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .animated-bg {
+        background: linear-gradient(45deg, #203746 0%, #0d47a1 100%);
+        background-size: 200% 200%;
+        animation: background 10s ease infinite;
+      }
+    </style> -->
+  </head>
+  <body
+    class="bg-slate-700 font-Parkinsans flex justify-center max-h-full animated-bg"
+  >
+    <div class="container h-full lg:mx-36 lg:my-7 mx-0">
+      <h1 class="text-white md:text-6xl text-2xl mt-5 text-center">
+        Numerical analysis project
+      </h1>
+      <div
+        class="splitTwo md:m-2 flex gap-4 md:justify-around md:flex-row flex-col"
+      >
+        <div class="flex-1 p-2">
+          <h2 class="font-bold text-center md:text-3xl text-xl m-5 text-white">
+            Chapter one
+          </h2>
+          <a
+            class="flex-row mx-5 border-[2px] hover:m-1 duration-500 border-black text-white bg-gray-800 p-4 flex rounded-t-2xl group/test"
+            href="bisection.html"
+          >
+            <div class="text-xl flex justify-between items-center w-full">
+              <div>1- Bisection Method</div>
+              <div>
+                <img
+                  class="group-hover/test:scale-150 duration-200"
+                  width="15px"
+                  height="15px"
+                  src="./images/right-arrow-svgrepo-com (1).svg"
+                  alt
+                />
+              </div>
+            </div>
+          </a>
+          <a
+            class="mx-5 border-[2px] hover:m-1 duration-500 items-center border-black text-white bg-gray-800 p-4 flex group/test"
+            href="falsePosition.html"
+            ><div class="text-xl flex justify-between items-center w-full">
+              2 - False Position Method
+            </div>
+            <div>
+              <img
+                class="group-hover/test:scale-150 duration-200"
+                width="15px"
+                height="15px"
+                src="./images/right-arrow-svgrepo-com (1).svg"
+                alt
+              /></div
+          ></a>
+          <a
+            class="mx-5 border-[2px] hover:m-1 duration-500 items-center border-black text-white bg-gray-800 p-4 flex group/test"
+            href="simpleFixedPoint.html"
+            ><div class="text-xl flex justify-between items-center w-full">
+              3 - Simple Fixed point Method
+            </div>
+            <div>
+              <img
+                class="group-hover/test:scale-150 duration-200"
+                width="15px"
+                height="15px"
+                src="./images/right-arrow-svgrepo-com (1).svg"
+                alt
+              /></div
+          ></a>
+          <a
+            class="mx-5 border-[2px] hover:m-1 duration-500 items-center border-black text-white bg-gray-800 p-4 flex group/test"
+            href="newton.html"
+            ><div class="text-xl flex justify-between items-center w-full">
+              4 - Newtion Method
+            </div>
+            <div>
+              <img
+                class="group-hover/test:scale-150 duration-200"
+                width="15px"
+                height="15px"
+                src="./images/right-arrow-svgrepo-com (1).svg"
+                alt
+              /></div
+          ></a>
+          <a
+            class="mx-5 border-[2px] hover:m-1 duration-500 items-center border-black text-white bg-gray-800 p-4 flex rounded-b-2xl group/test"
+            href="secant.html"
+            ><div class="text-xl flex justify-between items-center w-full">
+              5 - Secant Method
+            </div>
+            <div>
+              <img
+                class="group-hover/test:scale-150 duration-200"
+                width="15px"
+                height="15px"
+                src="./images/right-arrow-svgrepo-com (1).svg"
+                alt
+              /></div
+          ></a>
+        </div>
+        <div class="p-2 flex-1">
+          <h2 class="font-bold text-center md:text-3xl text-xl m-5 text-white">
+            Chapter two
+          </h2>
+          <a
+            class="mx-5 border-[2px] hover:m-1 duration-500 items-center border-black text-white bg-gray-800 p-4 flex rounded-t-2xl group/test"
+            href="Gauss-Elimination.html"
+            ><div class="text-xl flex justify-between items-center w-full">
+              1 - Gauss Elimination Method
+            </div>
+            <div>
+              <img
+                class="group-hover/test:scale-150 duration-200"
+                width="15px"
+                height="15px"
+                src="./images/right-arrow-svgrepo-com (1).svg"
+                alt
+              /></div
+          ></a>
+          <a
+            class="mx-5 border-[2px] hover:m-1 duration-500 items-center border-black text-white bg-gray-800 p-4 flex group/test"
+            href="LU_Decomposition.html"
+            ><div class="text-xl flex justify-between items-center w-full">
+              2 - LU Decomposition Method
+            </div>
+            <div>
+              <img
+                class="group-hover/test:scale-150 duration-200"
+                width="15px"
+                height="15px"
+                src="./images/right-arrow-svgrepo-com (1).svg"
+                alt
+              /></div
+          ></a>
+          <!-- <a class="mx-5 border-[2px] hover:m-1 duration-500 border-black text-white bg-gray-800 p-4 flex" href=""><div class="text-xl">3 - Bisection method</div></a> -->
+          <!-- <a class="mx-5 border-[2px] hover:m-1 duration-500 border-black text-white bg-gray-800 p-4 flex" href=""><div class="text-xl">4 - Bisection method</div></a> -->
+          <a
+            class="mx-5 border-[2px] hover:m-1 duration-500 items-center border-black text-white bg-gray-800 p-4 flex group/test"
+            href="Gauss-Jordan.html"
+            ><div class="text-xl flex justify-between items-center w-full">
+              3 - Gauss-Jordan Method
+            </div>
+            <div>
+              <img
+                class="group-hover/test:scale-150 duration-200"
+                width="15px"
+                height="15px"
+                src="./images/right-arrow-svgrepo-com (1).svg"
+                alt
+              /></div
+          ></a>
+          <a
+            class="mx-5 border-[2px] hover:m-1 duration-500 items-center border-black text-white bg-gray-800 p-4 flex rounded-b-2xl group/test"
+            href="cramer.html"
+            ><div class="text-xl flex justify-between items-center w-full">
+              4 - Cramer Method
+            </div>
+            <div>
+              <img
+                class="group-hover/test:scale-150 duration-200"
+                width="15px"
+                height="15px"
+                src="./images/right-arrow-svgrepo-com (1).svg"
+                alt
+              /></div
+          ></a>
+        </div>
+      </div>
+      <a
+        class="mx-9 border-[2px] hover:m-1 duration-500 items-center border-black text-white bg-gray-800 p-4 my-2 flex rounded-2xl group/test"
+        href="golden-search.html"
+        ><div class="text-xl flex justify-between items-center w-full">
+          1 - Golden search Method (chpater 3)
+        </div>
+        <div>
+          <img
+            class="group-hover/test:scale-150 duration-200"
+            width="15px"
+            height="15px"
+            src="./images/right-arrow-svgrepo-com (1).svg"
+            alt
+          /></div
+      ></a>
+    </div>
+  </body>
+</html>

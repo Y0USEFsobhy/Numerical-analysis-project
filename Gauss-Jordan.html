@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gauss Jordan Method</title>
+    <link rel="stylesheet" href="src/output.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&family=Signika+Negative:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.0.0/math.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+    
+        document.addEventListener("DOMContentLoaded", () => {
+            const inputs = document.querySelectorAll('form input[type="text"]');
+    
+            inputs.forEach((input, index) => {
+              input.addEventListener("keydown", (event) => {
+                if (event.key === "Enter") {
+                  event.preventDefault();
+                  if (index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                  }
+                }
+              });
+            });
+          });
+          function refreshPage() {
+            location.reload();
+          }
+        
+    </script>
+  </head>
+  <body class="bg-gray-700 font-Parkinsans flex items-center flex-col h-full mt-5  xl:px-36 px-4">
+    <div class="flex justify-center items-center flex-col mb-28">
+        <h1 class="text-white text-center lg:text-5xl text-2xl py-4">
+            Gauss Jordan Method
+      </h1>
+            <form action="" class="grid grid-cols-4 grid-rows-3">
+                <!-- <div class="parent"> -->
+                <input class="            bg-[#222630] m-2 shadow-2xl px-4 py-3 outline-none md:w-[195px] lg:w-[245px] text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-transparent text-center placeholder:text-center" placeholder="a11" id="a11" type="text">
+                <input class="            bg-[#222630] m-2 shadow-2xl px-4 py-3 outline-none md:w-[195px] lg:w-[245px] text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-transparent text-center placeholder:text-center" placeholder="a12" id="a12" type="text">
+                <input class="            bg-[#222630] m-2 shadow-2xl px-4 py-3 outline-none md:w-[195px] lg:w-[245px] text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-transparent text-center placeholder:text-center" placeholder="a13" id="a13" type="text">
+                <input class="            bg-[#222630] m-2 shadow-2xl px-4 py-3 outline-none md:w-[195px] lg:w-[245px] text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-transparent text-center placeholder:text-center" placeholder="b1"  id="b1"  type="text">
+                <input class="row-start-2 bg-[#222630] m-2 shadow-2xl px-4 py-3 outline-none md:w-[195px] lg:w-[245px] text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-transparent text-center placeholder:text-center" placeholder="a21" id="a21" type="text">
+                <input class="row-start-2 bg-[#222630] m-2 shadow-2xl px-4 py-3 outline-none md:w-[195px] lg:w-[245px] text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-transparent text-center placeholder:text-center" placeholder="a22" id="a22" type="text">
+                <input class="row-start-2 bg-[#222630] m-2 shadow-2xl px-4 py-3 outline-none md:w-[195px] lg:w-[245px] text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-transparent text-center placeholder:text-center" placeholder="a23" id="a23" type="text">
+                <input class="row-start-2 bg-[#222630] m-2 shadow-2xl px-4 py-3 outline-none md:w-[195px] lg:w-[245px] text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-transparent text-center placeholder:text-center" placeholder="b2"  id="b2"  type="text">
+                <input class="row-start-3 bg-[#222630] m-2 shadow-2xl px-4 py-3 outline-none md:w-[195px] lg:w-[245px] text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-transparent text-center placeholder:text-center" placeholder="a31" id="a31" type="text">
+                <input class="row-start-3 bg-[#222630] m-2 shadow-2xl px-4 py-3 outline-none md:w-[195px] lg:w-[245px] text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-transparent text-center placeholder:text-center" placeholder="a31" id="a32" type="text"> 
+                <input class="row-start-3 bg-[#222630] m-2 shadow-2xl px-4 py-3 outline-none md:w-[195px] lg:w-[245px] text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-transparent text-center placeholder:text-center" placeholder="a33" id="a33" type="text">  
+                <input class="row-start-3 bg-[#222630] m-2 shadow-2xl px-4 py-3 outline-none md:w-[195px] lg:w-[245px] text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-transparent text-center placeholder:text-center" placeholder="b3"  id="b3"  type="text">  
+              <!-- </div> -->
+            </form>
+            <div class="flex mb-2 md:flex-row flex-row">
+                <button
+        onclick="refreshPage()"
+        class="w-[150px] bg-black h-[45px] mx-2 flex items-center justify-center rounded-lg cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-100 hover:shadow-lg before:absolute before:top-0 before:-right-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#324c8e] before:to-[#596A95] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-lg hover:before:right-0 text-[#fff]"
+      >
+      <img src="images/icons8-broom-16.png" class="scale-110 mr-3" alt="" />
+        Clear
+      </button>
+      <button
+        id="sub"
+        type="submit"
+        class="w-[150px] bg-black h-[45px] mx-2 flex items-center justify-center rounded-lg cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-100 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#596A95] before:to-[#324c8e] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-lg hover:before:left-0 text-[#fff]"
+      >
+      calculate
+      <img
+      src="images/icons8-magic-wand-forma-thin-sharp-32.png"
+      class="scale-75 ml-2"
+      alt=""
+      />
+    </button>
+    </div>
+</div>
+
+    <div class="hidden md:block md:fixed bottom-5 left-8">
+      <a href="index.html">
+        <button
+          class="bg-white text-center w-48 rounded-2xl h-14 relative text-black text-xl font-semibold group"
+          type="button"
+        >
+          <div
+            class="bg-[#596A95] rounded-xl h-12 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-[184px] z-10 duration-500"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1024 1024"
+              height="25px"
+              width="25px"
+            >
+              <path
+                d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"
+                fill="#000000"
+              ></path>
+              <path
+                d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"
+                fill="#000000"
+              ></path>
+            </svg>
+          </div>
+          <p class="translate-x-2">Go Back</p>
+        </button>
+      </a>
+    </div>
+    <script src="src/Gauss-Jordan.js"></script>
+  </body>
+</html>

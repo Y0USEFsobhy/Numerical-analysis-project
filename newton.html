@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Newton Method</title>
+    <link rel="stylesheet" href="src/output.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&family=Signika+Negative:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.0.0/math.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const inputs = document.querySelectorAll('form input[type="text"]');
+
+        inputs.forEach((input, index) => {
+          input.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+              event.preventDefault();
+              if (index < inputs.length - 1) {
+                inputs[index + 1].focus();
+              }
+            }
+          });
+        });
+      });
+      function refreshPage() {
+        location.reload();
+      }
+    </script>
+  </head>
+  <body
+    class="bg-gray-700 font-Parkinsans flex justify-center items-center flex-col h-full mt-5 px-4"
+  >
+    <div class="w-full flex justify-around items-center flex-col md:flex-row">
+      <h1 class="text-white text-center lg:text-5xl text-2xl py-3">
+        Newton Method
+      </h1>
+      <div class="gap-6 my-[10px] flex flex-row items-center md:ml-5">
+        <p class="text-white">Error</p>
+        <label
+          class="relative h-8 w-12 cursor-pointer [-webkit-tap-highlight-color:_transparent]"
+          for="switch"
+        >
+          <input class="peer sr-only" id="switch" type="checkbox" />
+
+          <span
+            class="absolute inset-0 m-auto h-2 rounded-full bg-stone-400"
+          ></span>
+
+          <span
+            class="absolute inset-y-0 start-0 m-auto size-6 rounded-full bg-stone-600 transition-all peer-checked:start-6 peer-checked:[&amp;_>_*]:scale-0"
+          >
+            <span
+              class="absolute inset-0 m-auto size-4 rounded-full bg-stone-300 transition"
+            >
+            </span>
+          </span>
+        </label>
+        <p class="text-white">Iteration</p>
+      </div>
+    </div>
+
+    <form action class="flex justify-center flex-row flex-wrap">
+      <input
+        id="fun"
+        type="text"
+        class="bg-[#222630] m-2 shadow-2xl px-4 py-3 outline-none w-[245px] text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-transparent"
+        name="text"
+        placeholder="Enter the function"
+        list="test"
+      />
+      <input
+        id="xStart"
+        class="bg-[#222630] m-2 shadow-2xl px-4 py-3 outline-none w-[245px] text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-transparent"
+        name="text"
+        placeholder="Enter the xu value"
+        type="text"
+      />
+
+      <input
+        id="eps"
+        class="bg-[#222630] m-2 shadow-2xl px-4 py-3 outline-none w-[245px] text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-transparent"
+        name="text"
+        placeholder="Enter the eps or Iteration"
+        type="text"
+      />
+      <!-- [#2B3040]-border-color -->
+    </form>
+    <div class="flex mb-2 md:flex-row flex-row">
+      <button
+        onclick="refreshPage()"
+        class="w-[150px] bg-black h-[45px] mx-2 flex items-center justify-center rounded-lg cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-100 hover:shadow-lg before:absolute before:top-0 before:-right-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#324c8e] before:to-[#596A95] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-lg hover:before:right-0 text-[#fff]"
+      >
+        <img src="images/icons8-broom-16.png" class="scale-110 mr-3" alt="" />
+        Clear
+      </button>
+      <button
+        id="sub"
+        type="submit"
+        class="w-[150px] bg-black h-[45px] mx-2 flex items-center justify-center rounded-lg cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-100 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#596A95] before:to-[#324c8e] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-lg hover:before:left-0 text-[#fff]"
+      >
+        calculate
+        <img
+          src="images/icons8-magic-wand-forma-thin-sharp-32.png"
+          class="scale-75 ml-2"
+          alt=""
+        />
+      </button>
+    </div>
+
+    <div class="hidden md:block md:fixed bottom-5 left-8">
+      <a href="index.html">
+        <button
+          class="bg-white text-center w-48 rounded-2xl h-14 relative text-black text-xl font-semibold group"
+          type="button"
+        >
+          <div
+            class="bg-[#596A95] rounded-xl h-12 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-[184px] z-10 duration-500"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1024 1024"
+              height="25px"
+              width="25px"
+            >
+              <path
+                d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"
+                fill="#000000"
+              ></path>
+              <path
+                d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"
+                fill="#000000"
+              ></path>
+            </svg>
+          </div>
+          <p class="translate-x-2">Go Back</p>
+        </button>
+      </a>
+    </div>
+    <script src="src/newton.js"></script>
+  </body>
+</html>
